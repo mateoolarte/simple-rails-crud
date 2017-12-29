@@ -9,10 +9,11 @@
       <%= f.number_field :price, class: "form-control input-lg", placeholder: "Precio del producto" %>
     </div>
 
-    <% @categories.all.each do |category| %>
-      <div>
-        <%= check_box_tag :category_ids, category.id, @product.categories.include?(category), :name => 'product[category_ids][]' -%>
-        <%= label_tag :category_ids, category.name -%>
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name  do |c| %>
+      <div class="checkbox">
+        <%= c.label do %>
+          <%= c.check_box %> <%= c.object.name %>
+        <% end %>
       </div>
     <% end %> <br>
 
