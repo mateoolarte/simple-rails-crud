@@ -1,0 +1,30 @@
+<div class="text-right">
+  <%= link_to "Nuevo producto", new_product_path, class: "btn btn-success" %>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Categorías</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <% cat = '' %>
+        <% product.categories.each do |category| %>
+          <% cat += "#{category.name} " %>
+        <%end%>
+        <td>
+          <%= cat %>
+        </td>
+        <td><%= link_to "Editar", edit_product_path(product.id) %></td>
+        <td><%= link_to "Eliminar".html_safe, product, method: :delete, data: { confirm: "¿Estás seguro de eliminar este producto?" }%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

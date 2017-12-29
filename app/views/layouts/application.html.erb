@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ProductsRails</title>
+    <title>Products Rails</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <div class="row">
+        <h1><%= link_to "Products", products_path %></h1>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
